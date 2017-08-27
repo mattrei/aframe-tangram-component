@@ -22,7 +22,7 @@ The geojson component has the `material` and `geometry` components as a dependen
 | maxBounds | The maximum bounds of the map. Given as [[southwest], [northeast]] | [] |
 | fitBounds | Uses the optimal zoom level for the given map boundaries. Given as [[southwest], [northeast]] | [] |
 | zoom | The zoom level of the map. Is ignored when _fitBounds_ is given. | 13 |
-| pxToWorldRatio | The zoom level of the map. Is ignored when _fitBounds_ is given. | 13 |
+| pxToWorldRatio | The multiplication factor between the meter in A-Frame and the pixels of the map. | 100 |
 
 ##### Events
 | Name | Data | Description |
