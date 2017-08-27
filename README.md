@@ -16,7 +16,7 @@ The geojson component has the `material` and `geometry` components as a dependen
 ##### Schema
 | Property | Description | Default Value |
 | -------- | ----------- | ------------- |
-| mapzenAPIKey | Your Mapzen API key to make use of the Tangram API. May be empty depending on your style. See [here](https://mapzen.com/documentation/overview/api-keys) for more details. | "" |
+| mapzenAPIKey | Your Mapzen API key to make use of the Tangram API. May be empty depending if your style defines it. See [here](https://mapzen.com/documentation/overview/api-keys) for more details. | "" |
 | style | The style definition document for the ovleray style. Defaults to the standard Tangam style. | "" |
 | center | Center of the map, in the form of [longitude, latitude] | [0, 0] |
 | maxBounds | The maximum bounds of the map. Given as [[southwest], [northeast]] | [] |
@@ -111,3 +111,7 @@ require('aframe-tangram-component');
 
 ### Known issues
 * Dynamic maps are not support yet.
+
+### Notes
+* I am not working at Mapzen, this is a personal project.
+* API strongly influenced from the [A-Frame Mapbox component](https://github.com/jesstelford/aframe-map)

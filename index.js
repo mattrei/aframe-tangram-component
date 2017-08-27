@@ -1,16 +1,8 @@
 /* global AFRAME L Tangram */
 
-require('leaflet')
+require('leaflet');
 
-const Utils = require('./src/utils')
-
-/*
-const latLonFrom = require('./src/utils').latLonFrom;
-const leafletOptions = require('./utils').leafletOptions;
-const getCanvasContainerAssetElement = require('./utils').getCanvasContainerAssetElement;
-const processCanvasElement = require('./utils').processCanvasElement;
-const processStyle = require('./utils').processStyle;
-*/
+const Utils = require('./src/utils');
 
 if (typeof AFRAME === 'undefined') {
   throw new Error('Component attempted to register before AFRAME was available.');
