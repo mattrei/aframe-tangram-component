@@ -61,14 +61,3 @@ module.exports.processStyle = function (style) {
 module.exports.latLonFrom = function (lonLat) {
   return [lonLat[1], lonLat[0]];
 };
-
-        /*
-                var loader = new THREE.FileLoader();
-                loader.load(data.markers, file => {
-                    const geojson = JSON.parse(file)
-                    var geojsonLayer = L.geoJSON(geojson) //.addTo(map);
-                    map.fitBounds(geojsonLayer.getBounds());
-                    console.log(this.project(15.814647674560547,
-                      47.77682884663196))
-                })
-        */
