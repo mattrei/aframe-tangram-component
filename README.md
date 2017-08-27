@@ -5,6 +5,8 @@ A Mapzen Tangram component for [A-Frame](https://aframe.io).
 > Supports A-Frame 0.6.0.
 > Works with the latest Tangram 0.13.x library and very likely above.
 
+![Example](doc/example.jpg)
+
 ### API
 
 #### `tangram-map` component
