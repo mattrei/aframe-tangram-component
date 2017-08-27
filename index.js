@@ -14,9 +14,9 @@ const MAP_LOADED_EVENT = 'map-loaded';
 const MAP_MOVE_END_EVENT = 'map-moveend';
 
 function setDimensions (id, el, width, height) {
-  const element = document.querySelector(`#${id}`);
-  element.style.width = `${width}px`;
-  element.style.height = `${height}px`;
+  const element = document.querySelector('#' + id);
+  element.style.width = width + 'px';
+  element.style.height = height + 'px';
 
   el.setAttribute('material', 'width', width);
   el.setAttribute('material', 'height', height);
@@ -40,7 +40,7 @@ AFRAME.registerComponent('tangram-map', {
       default: ''
     },
     center: {
-            // lon lat
+      // lon lat
       default: [0, 0],
       type: 'array'
     },
@@ -155,8 +155,8 @@ AFRAME.registerComponent('tangram-map', {
         Utils.processCanvasElement(canvasContainer);
       },
       view_complete: function () {
-        const canvasId = document.querySelector(`#${_canvasContainerId} canvas`).id;
-        self.el.setAttribute('material', 'src', `#${canvasId}`);
+        const canvasId = document.querySelector('#' + _canvasContainerId + ' canvas').id;
+        self.el.setAttribute('material', 'src', '#' + canvasId);
         self.el.emit(MAP_LOADED_EVENT);
       }
     });
@@ -168,7 +168,7 @@ AFRAME.registerComponent('tangram-map', {
 
   tick: function (delta, time) {},
 
-  project (lon, lat) {
+  project: function (lon, lat) {
     var px = this._mapInstance.latLngToLayerPoint([lat, lon]);
 
     const el = this.el.components.geometry.data;
@@ -182,7 +182,7 @@ AFRAME.registerComponent('tangram-map', {
     };
   },
 
-  unproject (x, y) {
+  unproject: function (x, y) {
         // The 3D world size of the entity
     const el = this.el.components.geometry.data;
 
