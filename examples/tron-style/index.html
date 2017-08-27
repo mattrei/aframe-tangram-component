@@ -4,6 +4,7 @@
     <meta name="description" content="Custom style example for Tangram component."></meta>
 
     <script src="../build.js"></script>
+    <script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
     <script src="https://mapzen.com/tangram/tangram.min.js"></script>
   </head>
   <body>
@@ -11,13 +12,13 @@
       <a-assets>
         <a-asset-item id="zip-tron" src="assets/tron-style.zip" />
       </a-assets>
+
+      <a-entity environment="preset: starry"></a-entity>
  
         <a-entity 
           position="0 2 -2"
-          geometry="primitive: plane; width: 8; height: 8;"
-          
+          geometry="primitive: plane; width: 8; height: 8;"          
           material="color: #fff; shader: flat;"
-
           tangram-map="
           mapzenAPIKey: mapzen-tDHBHDp;
           style: #zip-tron;
