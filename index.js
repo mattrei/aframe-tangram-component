@@ -57,7 +57,7 @@ AFRAME.registerComponent('tangram-map', {
       type: 'array'
     },
     zoom: {
-      default: 13
+      default: 0
     },
     pxToWorldRatio: {
       default: 100
@@ -169,37 +169,28 @@ AFRAME.registerComponent('tangram-map', {
   tick: function (delta, time) {},
 
   project (lon, lat) {
-    const {
-            x: pxX,
-            y: pxY
-        } = this._mapInstance.latLngToLayerPoint([lat, lon]);
+    var px = this._mapInstance.latLngToLayerPoint([lat, lon]);
 
-    const {
-            width: elWidth,
-            height: elHeight
-        } = this.el.components.geometry.data;
+    const el = this.el.components.geometry.data;
 
     return {
-      x: (pxX / this.data.pxToWorldRatio) - (elWidth / 2),
+      x: (px.x / this.data.pxToWorldRatio) - (el.width / 2),
             // y-coord is inverted (positive up in world space, positive down in
             // pixel space)
-      y: -(pxY / this.data.pxToWorldRatio) + (elHeight / 2),
+      y: -(px.y / this.data.pxToWorldRatio) + (el.height / 2),
       z: 0
     };
   },
 
   unproject (x, y) {
         // The 3D world size of the entity
-    const {
-            width: elWidth,
-            height: elHeight
-        } = this.el.components.geometry.data;
+    const el = this.el.components.geometry.data;
 
-        // Converting back to pixel space
-    const pxX = (x + (elWidth / 2)) * this.data.pxToWorldRatio;
+    // Converting back to pixel space
+    const pxX = (x + (el.width / 2)) * this.data.pxToWorldRatio;
         // y-coord is inverted (positive up in world space, positive down in
         // pixel space)
-    const pxY = ((elHeight / 2) - y) * this.data.pxToWorldRatio;
+    const pxY = ((el.height / 2) - y) * this.data.pxToWorldRatio;
 
         // Return the lat / long of that pixel on the map
     var latLng = this._mapInstance.layerPointToLatLng([pxX, pxY]);

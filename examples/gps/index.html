@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <title>A-Frame Tangram Component - Map</title>
+    <meta name="description" content="Basic map example for Tangram component."></meta>
+
+    <script src="../build.js"></script>
+    <script src="https://mapzen.com/tangram/tangram.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+ 
+      <a-entity 
+        position="0 2.5 -2"
+        geometry="primitive: plane; width: 7; height: 5;"
+        tangram-map="
+        mapzenAPIKey: mapzen-tDHBHDp;
+        "
+        >
+        <a-sphere id="marker" color="#EF2D5E" position="0 0 0" visible="false" radius="0.1"></a-sphere>
+      </a-entity>
+
+      <a-box position="0 5 -2" width="7.1" height="0.1" depth="0.1" color="#4CC3D9"></a-box>
+      <a-box position="0 0 -2" width="7.1" height="0.1" depth="0.1" color="#4CC3D9"></a-box>
+      <a-box position="3.5 2.5 -2" width="0.1" height="5.1" depth="0.1" color="#4CC3D9"></a-box>
+      <a-box position="-3.5 2.5 -2" width="0.1" height="5.1" depth="0.1" color="#4CC3D9"></a-box>
+
+
+      <a-entity position="0 0 3.8">
+        <a-camera></a-camera>
+      </a-entity>
+
+    </a-scene>
+  </body>
+          <script>
+      var mapEl = document.querySelector('[tangram-map]');
+      var markerEl = document.querySelector('#marker');
+      var setProperty = window.AFRAME.utils.entity.setComponentProperty;
+      mapEl.addEventListener('map-loaded', function() {
+        navigator.geolocation.watchPosition(function(position) {
+          var long = position.coords.longitude;
+          var lat = position.coords.latitude;
+          setProperty(mapEl, 'tangram-map.center', long + ', ' + lat);
+          setProperty(mapEl, 'tangram-map.zoom', '11');
+          setProperty(markerEl, 'position', mapEl.components["tangram-map"].project(long, lat));
+          setProperty(markerEl, 'visible', true);
+        }, function(error) {
+          console.error(error);
+        });
+      });
+    </script>
+</html>
