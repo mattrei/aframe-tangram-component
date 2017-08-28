@@ -22,7 +22,7 @@ The geojson component has the `material` and `geometry` components as a dependen
 | maxBounds | The maximum bounds of the map. Given as [[southwest], [northeast]] | [] |
 | fitBounds | Uses the optimal zoom level for the given map boundaries. Given as [[southwest], [northeast]] | [] |
 | zoom | The zoom level of the map. Is ignored when _fitBounds_ is given. | 13 |
-| pxToWorldRatio | The multiplication factor between the meter in A-Frame and the pixels of the map. | 100 |
+| pxToWorldRatio | The multiplication factor between meters in A-Frame and the pixels of the map. ie; when set to 100, will display 100 pixels per 1 meter in world space. (see [a note on fidelity](#a-note-on-fidelity)) | 100 |
 
 ##### Events
 | Name | Data | Description |
@@ -37,7 +37,18 @@ The geojson component has the `material` and `geometry` components as a dependen
 | unproject | _x_, _y_| Gives the longitude and latitude of the pixel coordinates. |
 
 ### Styling
-The Mapzen Tangram styling:
+The Mapzen Tangram are styled within a (set) of YAML files. See the [Tangram documentation](https://mapzen.com/documentation/tangram/) for details. 
+
+### A note on fidelity
+
+The higher `pxToWorldRatio`, the more map area will be displayed per world
+unit. That canvas has to be translated into a plane in world space. This is
+combined with the width and height in world space (from geometry.width and
+geometry.height on the entity) to set up the plane for rendering in 3D.
+
+The map is rendered as a texture on a 3D plane. For best performance, texture
+sizes should be kept to powers of 2. Keeping this in mind, you should work to
+ensure `width * pxToWorldRatio` and `height * pxToWorldRatio` are powers of 2.
 
 ### Dependencies
 The Mapzen styling documents are in the YAML format, so you need a possiblity to require those files.
