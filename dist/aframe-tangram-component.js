@@ -252,6 +252,10 @@
 	      lon: latLng.lng,
 	      lat: latLng.lat
 	    };
+	  },
+
+	  getLeafletInstance: function () {
+	    return this._mapInstance;
 	  }
 	});
 
