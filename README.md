@@ -35,6 +35,7 @@ The geojson component has the `material` and `geometry` components as a dependen
 | -------- | ----------- | ------------- |
 | project | _lon_, _lat_| Returns the pixel x and y coordinates of the given longitude and latitude. |
 | unproject | _x_, _y_| Gives the longitude and latitude of the pixel coordinates. |
+| getLeafletInstance | | Returns the _Leaflet_ instance to work programmatically with the map. |
 
 ### Styling
 The Mapzen Tangram are styled within a (set) of YAML files. See the [Tangram documentation](https://mapzen.com/documentation/tangram/) for details. 
