@@ -1,6 +1,7 @@
 /* global AFRAME L Tangram */
 
-require('leaflet');
+const Tangram = require('tangram');
+const L = require('leaflet');
 
 const Utils = require('./src/utils');
 
