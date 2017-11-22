@@ -1,9 +1,8 @@
 ## aframe-tangram-component
 
-A Mapzen Tangram component for [A-Frame](https://aframe.io).
+A [Mapzen Tangram](https://mapzen.com/products/tangram/) component for [A-Frame](https://aframe.io).
 
-> Supports A-Frame 0.6.0.
-> Works with the latest Tangram 0.13.x library and very likely above.
+> Supports A-Frame 0.7.0.
 
 ![Example](doc/example.jpg)
 
@@ -38,7 +37,8 @@ The geojson component has the `material` and `geometry` components as a dependen
 | getLeafletInstance | | Returns the _Leaflet_ instance to work programmatically with the map. |
 
 ### Styling
-The Mapzen Tangram are styled within a (set) of YAML files. See the [Tangram documentation](https://mapzen.com/documentation/tangram/) for details. 
+The Mapzen Tangram are styled within a (set) of YAML files or ZIP files. See the [Tangram documentation](https://mapzen.com/documentation/tangram/) for details. 
+You can also directly load the prefabed styles provided by [Mapzen](https://mapzen.com/documentation/cartography/styles/)
 
 ### A note on fidelity
 
@@ -70,7 +70,7 @@ Install and use by directly including the [browser files](dist):
 ```html
 <head>
   <title>My A-Frame Scene</title>
-  <script src="https://aframe.io/releases/0.6.0/aframe.min.js"></script>
+  <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
   <script src="https://unpkg.com/aframe-tangram-component/dist/aframe-tangram-component.min.js"></script>
 </head>
 

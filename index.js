@@ -73,7 +73,7 @@ AFRAME.registerComponent('tangram-map', {
   init: function () {
     this.creatingMap = false;
     this._mapInstance = null;
-    this._scene = null;
+    this._layer = null;
 
     this._initMap();
   },
@@ -164,8 +164,12 @@ AFRAME.registerComponent('tangram-map', {
     layer.addTo(map);
 
     this._mapInstance = map;
+    this._layer = layer;
   },
-  remove: function () {},
+  remove: function () {
+    // TODO
+    this._layer.remove()
+  },
 
   tick: function (delta, time) {},
 
