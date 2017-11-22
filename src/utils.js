@@ -1,5 +1,4 @@
 const cuid = require('cuid');
-const defaultMapStyle = require('./simple-style.yaml');
 
 module.exports.leafletOptions = {
   'preferCanvas': true,
@@ -48,14 +47,6 @@ module.exports.processCanvasElement = function (canvasContainer) {
   const canvas = canvasContainer.querySelector('canvas');
   canvas.setAttribute('id', cuid());
   canvas.setAttribute('crossOrigin', 'anonymous');
-};
-
-module.exports.processStyle = function (style) {
-  if (!style) {
-    return defaultMapStyle;
-  }
-
-  return style;
 };
 
 module.exports.latLonFrom = function (lonLat) {

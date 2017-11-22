@@ -7,12 +7,17 @@
   </head>
   <body>
     <a-scene>
+
+        <a-assets>
+            <a-asset-item id="zip-style" src="https://mapzen.com/carto/cinnabar-style/cinnabar-style.zip" />
+          </a-assets>
  
       <a-entity 
         position="0 2.5 -2"
         geometry="primitive: plane; width: 7; height: 5;"
         tangram-map="
         mapzenAPIKey: mapzen-tDHBHDp;
+        style: #zip-style;
         "
         >
         <a-sphere id="marker" color="#EF2D5E" position="0 0 0" visible="false" radius="0.1"></a-sphere>

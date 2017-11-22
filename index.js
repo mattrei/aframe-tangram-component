@@ -137,7 +137,7 @@ AFRAME.registerComponent('tangram-map', {
 
     var map = L.map(canvasContainer, Utils.leafletOptions);
 
-    const sceneStyle = Utils.processStyle(this.data.style);
+    const sceneStyle = this.data.style;
 
     var layer = Tangram.leafletLayer({
       scene: {

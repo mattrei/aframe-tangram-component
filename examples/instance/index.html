@@ -9,6 +9,10 @@
   <body>
     <a-scene>
  
+        <a-assets>
+            <a-asset-item id="zip-style" src="https://mapzen.com/carto/bubble-wrap-style/bubble-wrap-style.zip" />
+          </a-assets>
+
       <a-entity 
         id="map"
         position="0 2.5 -2"
@@ -23,6 +27,7 @@
         center: 15.8056, 47.7671;
         zoom: 12;
         pxToWorldRatio: 100;
+        style: #zip-style;
         "
         >
       </a-entity>

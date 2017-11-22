@@ -16,7 +16,7 @@ The geojson component has the `material` and `geometry` components as a dependen
 | Property | Description | Default Value |
 | -------- | ----------- | ------------- |
 | mapzenAPIKey | Your Mapzen API key to make use of the Tangram API. May be empty depending if your style defines it. See [here](https://mapzen.com/documentation/overview/api-keys) for more details. | "" |
-| style | The style definition document for the ovleray style. Defaults to the standard Tangam style. | "" |
+| style | The style definition document for the ovleray style. Must point to a custom style or to a [basemap style](https://mapzen.com/documentation/cartography/styles/). | "" |
 | center | Center of the map, in the form of [longitude, latitude] | [0, 0] |
 | maxBounds | The maximum bounds of the map. Given as [[southwest], [northeast]] | [] |
 | fitBounds | Uses the optimal zoom level for the given map boundaries. Given as [[southwest], [northeast]] | [] |
