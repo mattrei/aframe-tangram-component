@@ -67,7 +67,7 @@
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* global AFRAME L Tangram */
+/* global AFRAME */
 
 const Tangram = __webpack_require__(3);
 const L = __webpack_require__(4);
@@ -80,8 +80,8 @@ if (typeof AFRAME === 'undefined') {
 
 const cuid = __webpack_require__(1);
 
-const MAP_LOADED_EVENT = 'map-loaded';
-const MAP_MOVE_END_EVENT = 'map-moveend';
+const MAP_LOADED_EVENT = 'tangram-map-loaded';
+const MAP_MOVE_END_EVENT = 'tangram-map-moveend';
 
 function setDimensions (id, el, width, height) {
   const element = document.querySelector('#' + id);
@@ -91,6 +91,8 @@ function setDimensions (id, el, width, height) {
   el.setAttribute('material', 'width', width);
   el.setAttribute('material', 'height', height);
 }
+
+const DEBUG_CANVAS_OFFSET = 99999;
 
 /**
  * Tangram component for A-Frame.
@@ -114,26 +116,11 @@ AFRAME.registerComponent('tangram-map', {
       default: [0, 0],
       type: 'array'
     },
-        /**
-            [0] southwest
-            [1] northeast
-        */
-    maxBounds: {
-      default: [],
-      type: 'array'
-    },
-    fitBounds: {
-      default: [],
-      type: 'array'
-    },
     zoom: {
       default: 0
     },
     pxToWorldRatio: {
       default: 100
-    },
-    canvasOffsetPx: {
-      default: 9999 // debug
     }
   },
 
@@ -149,7 +136,9 @@ AFRAME.registerComponent('tangram-map', {
   update: function (oldData) {
     var self = this;
 
-        // Nothing changed
+    console.log(this.data);
+    console.log(this.el.components.geometry.data);
+
     if (AFRAME.utils.deepEqual(oldData, this.data)) {
       return;
     }
@@ -161,31 +150,19 @@ AFRAME.registerComponent('tangram-map', {
       setDimensions(this._canvasContainerId, this.el, width, height);
     }
 
-        // Everything after this requires a map instance
+    // Everything after this requires a map instance
     if (!this._mapInstance) {
       return;
     }
 
-    // if (!AFRAME.utils.deepEqual(oldData.maxBounds, this.data.maxBounds)) {
-    if (oldData.maxBounds !== this.data.maxBounds) {
-      this._mapInstance.setMaxBounds(L.latLngBounds(this.data.maxBounds));
-    }
-
     var moved = false;
-        // if (!AFRAME.utils.deepEqual(oldData.center, this.data.center)) {
     if (oldData.center !== this.data.center) {
       moved = true;
       this._mapInstance.setView(Utils.latLonFrom(this.data.center), this.data.zoom);
     }
 
-        // if (!AFRAME.utils.deepEqual(oldData.fitBounds, this.data.fitBounds)) {
-    if (this.data.fitBounds.length > 0 && oldData.fitBounds !== this.data.fitBounds) {
-      moved = true;
-      this._mapInstance.fitBounds(L.latLngBounds(this.data.fitBounds));
-    }
-
     if (moved) {
-            // A way to signal when these async actions have completed
+      // A way to signal when these async actions have completed
       this._mapInstance.once('moveend', function (evt) {
         self.el.emit(MAP_MOVE_END_EVENT);
       });
@@ -202,7 +179,7 @@ AFRAME.registerComponent('tangram-map', {
     const _canvasContainerId = cuid();
     this._canvasContainerId = _canvasContainerId;
     const canvasContainer = Utils.getCanvasContainerAssetElement(_canvasContainerId,
-            width, height, data.canvasOffsetPx);
+            width, height, DEBUG_CANVAS_OFFSET);
 
     var map = L.map(canvasContainer, Utils.leafletOptions);
 
@@ -237,7 +214,7 @@ AFRAME.registerComponent('tangram-map', {
   },
   remove: function () {
     // TODO
-    this._layer.remove()
+    this._layer.remove();
   },
 
   tick: function (delta, time) {},
@@ -262,11 +239,9 @@ AFRAME.registerComponent('tangram-map', {
 
     // Converting back to pixel space
     const pxX = (x + (el.width / 2)) * this.data.pxToWorldRatio;
-        // y-coord is inverted (positive up in world space, positive down in
-        // pixel space)
     const pxY = ((el.height / 2) - y) * this.data.pxToWorldRatio;
 
-        // Return the lat / long of that pixel on the map
+    // Return the lat / long of that pixel on the map
     var latLng = this._mapInstance.layerPointToLatLng([pxX, pxY]);
     return {
       lon: latLng.lng,
@@ -274,8 +249,35 @@ AFRAME.registerComponent('tangram-map', {
     };
   },
 
-  getLeafletInstance: function () {
+  getMap: function () {
     return this._mapInstance;
+  }
+});
+
+AFRAME.registerPrimitive('a-tangram-map', {
+  // Defaults the terrain to be parallel to the ground.
+  defaultComponents: {
+    geometry: {
+      primitive: 'plane'
+    },
+    material: {
+      wireframe: false,
+      transparent: true,
+      side: 'both',
+      shader: 'flat',
+      color: '#ffffff'
+    },
+    'tangram-map': {}
+  },
+  mappings: {
+    'api-key': 'tangram-map.mapzenAPIKey',
+    'map-style': 'tangram-map.style',
+    zoom: 'tangram-map.zoom',
+    center: 'tangram-map.center',
+    'px-world-ratio': 'tangram-map.pxToWorldRatio',
+    height: 'geometry.height',
+    width: 'geometry.width'
+
   }
 });
 

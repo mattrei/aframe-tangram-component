@@ -75,19 +75,17 @@ Install and use by directly including the [browser files](dist):
 <body>
   <a-scene>
 
-      <a-entity 
-        position="0 2.5 -2"
-        geometry="primitive: plane; width: 7; height: 5;"
-        
-        material="shader: flat;"
-
-        tangram-map="
-        center: 15.8056, 47.7671;
-        zoom: 12;
-        pxToWorldRatio: 100;
-        "
+      <a-tangram-map 
+        position="0 0 -2"
+        width="7"
+        height="5"
+        api-key="mapzen-tDHBHDp"
+        map-style="#zip-style"
+        center="16, 48"
+        zoom="12"
+        px-world-ratio="100"
         >
-      </a-entity>
+      </a-tangram-map>
   </a-scene>
 </body>
 ```
