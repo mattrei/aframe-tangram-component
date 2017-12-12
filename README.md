@@ -97,7 +97,7 @@ version of the component straight into your HTML file, respective to your
 version of A-Frame:
 
 ```sh
-angle install aframe-geojson-component
+angle install aframe-tangramgeojson-component
 ```
 -->
 
