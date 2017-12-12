@@ -39,7 +39,7 @@
       var mapEl = document.querySelector('[tangram-map]');
       var markerEl = document.querySelector('#marker');
       var setProperty = window.AFRAME.utils.entity.setComponentProperty;
-      mapEl.addEventListener('map-loaded', function() {
+      mapEl.addEventListener('tangram-map-loaded', function() {
         navigator.geolocation.watchPosition(function(position) {
           var long = position.coords.longitude;
           var lat = position.coords.latitude;

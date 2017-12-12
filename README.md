@@ -18,23 +18,21 @@ The geojson component has the `material` and `geometry` components as a dependen
 | mapzenAPIKey | Your Mapzen API key to make use of the Tangram API. May be empty depending if your style defines it. See [here](https://mapzen.com/documentation/overview/api-keys) for more details. | "" |
 | style | The style definition document for the ovleray style. Must point to a custom style or to a [basemap style](https://mapzen.com/documentation/cartography/styles/). | "" |
 | center | Center of the map, in the form of [longitude, latitude] | [0, 0] |
-| maxBounds | The maximum bounds of the map. Given as [[southwest], [northeast]] | [] |
-| fitBounds | Uses the optimal zoom level for the given map boundaries. Given as [[southwest], [northeast]] | [] |
-| zoom | The zoom level of the map. Is ignored when _fitBounds_ is given. | 13 |
+| zoom | The zoom level of the map. | 13 |
 | pxToWorldRatio | The multiplication factor between meters in A-Frame and the pixels of the map. ie; when set to 100, will display 100 pixels per 1 meter in world space. (see [a note on fidelity](#a-note-on-fidelity)) | 100 |
 
 ##### Events
 | Name | Data | Description |
 | -------- | ----------- | ------------- |
-| map-loaded | None| Fired when the map has finished loading. |
-| map-moveend | None | Fired when the map parameters have been changed and the map has reloaded. |
+| tangram-map-loaded | None| Fired when the map has finished loading. |
+| tangram-map-moveend | None | Fired when the map parameters have been changed and the map has reloaded. |
 
 ##### API
 | Name | Data | Description |
 | -------- | ----------- | ------------- |
 | project | _lon_, _lat_| Returns the pixel x and y coordinates of the given longitude and latitude. |
 | unproject | _x_, _y_| Gives the longitude and latitude of the pixel coordinates. |
-| getLeafletInstance | | Returns the _Leaflet_ instance to work programmatically with the map. |
+| getMap | | Returns the _Leaflet_ instance to work programmatically with the map. |
 
 ### Styling
 The Mapzen Tangram are styled within a (set) of YAML files or ZIP files. See the [Tangram documentation](https://mapzen.com/documentation/tangram/) for details. 

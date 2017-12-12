@@ -5,7 +5,7 @@ AFRAME.registerComponent('map-controls', {
   dependencies: ['tangram-map'],
 
   init: function () {
-    this.leafletInstance = this.el.components['tangram-map'].getLeafletInstance();
+    this.map = this.el.components['tangram-map'].getMap();
   },
   getForward: function () {
     var zaxis = new THREE.Vector3();
@@ -21,6 +21,6 @@ AFRAME.registerComponent('map-controls', {
 
     const offset = {x: forward.x, y: -forward.y};
 
-    this.leafletInstance.panBy(offset, {animate: false});
+    this.map.panBy(offset, {animate: false});
   }
 });
