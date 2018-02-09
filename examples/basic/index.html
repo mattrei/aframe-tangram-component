@@ -11,37 +11,19 @@
       <a-assets>
         <a-asset-item id="zip-style" src="https://mapzen.com/carto/bubble-wrap-style/bubble-wrap-style.zip" />
       </a-assets>
- 
-      <!--
-      <a-entity 
-        position="0 2.5 -2"
-        geometry="primitive: plane; width: 7; height: 5;"
-        
-        material="shader: flat;"
 
-        tangram-map="
-        mapzenAPIKey: mapzen-tDHBHDp;
-        style: #zip-style;
-        center: 16, 48;
-        zoom: 12;
-        pxToWorldRatio: 100;
-        "
-        >
-      </a-entity>
-    -->
     
 
     <a-tangram-map 
-    position="0 2.5 -2"
-    width="7"
-    height="5"
-    api-key="mapzen-tDHBHDp"
-    map-style="#zip-style"
-    center="16, 48"
-    zoom="12"
-    px-world-ratio="100"
-    >
-  </a-tangram-map>
+      position="0 2.5 -2"
+      width="7"
+      height="5"
+      map-style="#zip-style"
+      center="16, 48"
+      zoom="12"
+      px-world-ratio="100"
+      >
+    </a-tangram-map>
 
 
       <a-box position="0 5 -2" width="7.1" height="0.1" depth="0.1" color="#4CC3D9"></a-box>

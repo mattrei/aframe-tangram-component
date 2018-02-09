@@ -67,9 +67,6 @@ AFRAME.registerComponent('tangram-map', {
   update: function (oldData) {
     var self = this;
 
-    console.log(this.data);
-    console.log(this.el.components.geometry.data);
-
     if (AFRAME.utils.deepEqual(oldData, this.data)) {
       return;
     }
