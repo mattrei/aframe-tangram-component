@@ -35,7 +35,7 @@ AFRAME.registerComponent('tangram-map', {
   ],
 
   schema: {
-    mapzenAPIKey: {
+    apiKey: {
       default: ''
     },
     style: {
@@ -117,7 +117,7 @@ AFRAME.registerComponent('tangram-map', {
       scene: {
         import: sceneStyle,
         global: {
-          sdk_mapzen_api_key: data.mapzenAPIKey
+          sdk_mapzen_api_key: data.apiKey
         }
       },
       webGLContextOptions: {
@@ -198,7 +198,7 @@ AFRAME.registerPrimitive('a-tangram-map', {
     'tangram-map': {}
   },
   mappings: {
-    'api-key': 'tangram-map.mapzenAPIKey',
+    'api-key': 'tangram-map.apiKey',
     'map-style': 'tangram-map.style',
     zoom: 'tangram-map.zoom',
     center: 'tangram-map.center',
