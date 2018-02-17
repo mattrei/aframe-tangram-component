@@ -20,6 +20,7 @@ The geojson component has the `material` and `geometry` components as a dependen
 | center | Center of the map, in the form of [longitude, latitude] | [0, 0] |
 | zoom | The zoom level of the map. | 13 |
 | pxToWorldRatio | The multiplication factor between meters in A-Frame and the pixels of the map. ie; when set to 100, will display 100 pixels per 1 meter in world space. (see [a note on fidelity](#a-note-on-fidelity)) | 100 |
+| highDensityDisplay | Flag if the _devicePixelRatio_ property should be considered. Mobile devices may have a high ppd so the output texture size may be 3 times as high as on desktop which may lead to crash of the browser | false |
 
 ##### Events
 | Name | Data | Description |
