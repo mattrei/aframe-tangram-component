@@ -121,6 +121,10 @@ AFRAME.registerComponent('tangram-map', {
     },
     pxToWorldRatio: {
       default: 100
+    },
+    highDensityDisplay: {
+      type: 'boolean',
+      default: false
     }
   },
 
@@ -186,12 +190,14 @@ AFRAME.registerComponent('tangram-map', {
       scene: {
         import: sceneStyle,
         global: {
-          sdk_mapzen_api_key: data.apiKey
+          sdk_api_key: data.apiKey
+          // language
         }
       },
       webGLContextOptions: {
         preserveDrawingBuffer: true
       },
+      highDensityDisplay: data.highDensityDisplay,
       attribution: ''
     });
     layer.scene.subscribe({
