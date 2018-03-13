@@ -2,7 +2,7 @@
 
 A [Mapzen Tangram](https://mapzen.com/products/tangram/) component for [A-Frame](https://aframe.io).
 
-> Supports A-Frame 0.7.0.
+> Supports A-Frame 0.8.0.
 
 ![Example](doc/example.jpg)
 
@@ -69,7 +69,7 @@ Install and use by directly including the [browser files](dist):
 ```html
 <head>
   <title>My A-Frame Scene</title>
-  <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+  <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
   <script src="https://unpkg.com/aframe-tangram-component/dist/aframe-tangram-component.min.js"></script>
 </head>
 
