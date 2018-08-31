@@ -2,8 +2,8 @@
   <head>
     <title>A-Frame Tangram Component - Tron Style</title>
     <meta name="description" content="Tron style example for Tangram component."></meta>
-
-    <script src="../build.js"></script>
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <script src="../../dist/aframe-tangram-component.min.js"></script>
     <script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
   </head>
   <body>
@@ -15,7 +15,7 @@
       <a-entity environment="preset: starry"></a-entity>
  
         <a-entity 
-          position="0 0 -2"
+          position="0 1 -4"
           geometry="primitive: plane; width: 8; height: 8;"          
           material="color: #fff; shader: flat;"
           tangram-map="
@@ -27,12 +27,6 @@
           "
           >
         </a-entity>
-
-
-      <a-entity position="0 0 3.8">
-        <a-camera></a-camera>
-      </a-entity>
-
 
     </a-scene>
   </body>

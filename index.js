@@ -125,6 +125,9 @@ AFRAME.registerComponent('tangram-map', {
           // language
         }
       },
+      preUpdate: false,
+      postUpdate: false,
+      disableRenderLoop: false,
       webGLContextOptions: {
         preserveDrawingBuffer: true
       },
@@ -151,7 +154,12 @@ AFRAME.registerComponent('tangram-map', {
     this._layer.remove();
   },
 
-  tick: function (delta, time) {},
+  tick: function (delta, time) {
+    if (this._layer) {
+      //this._layer.scene.requestRedraw();
+      //this._layer.scene.update();
+    }
+  },
 
   project: function (lon, lat) {
     var px = this._mapInstance.latLngToLayerPoint([lat, lon]);

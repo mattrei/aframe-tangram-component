@@ -3,21 +3,22 @@
     <title>A-Frame Tangram Component - GPS</title>
     <meta name="description" content="GPS map example for Tangram component."></meta>
 
-    <script src="../build.js"></script>
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <script src="../../dist/aframe-tangram-component.min.js"></script>
   </head>
   <body>
     <a-scene>
 
         <a-assets>
-            <a-asset-item id="zip-style" src="https://www.nextzen.org/carto/walkabout-style/7/walkabout-style.zip" />
+            <a-asset-item id="zip-style" src="https://www.nextzen.org/carto/tron-style/6/tron-style.zip" />
           </a-assets>
  
       <a-entity 
         position="0 0 -2"
         geometry="primitive: plane; width: 7; height: 5;"
         tangram-map="
-        apiKey: UJcQwnnfQnWcPtKe2aYaEw;
-        style: #zip-style;
+          apiKey: UJcQwnnfQnWcPtKe2aYaEw;
+          style: #zip-style;
         "
         >
         <a-sphere id="marker" color="#EF2D5E" position="0 0 0" visible="false" radius="0.1"></a-sphere>
