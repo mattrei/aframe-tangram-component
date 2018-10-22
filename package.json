@@ -5,16 +5,16 @@
     "main": "index.js",
     "cdn": "dist/aframe-tangram-component.min.js",
     "scripts": {
-      "build": "webpack index.js dist/aframe-tangram-component.js",
-      "dev": "budo index.js:dist/aframe-tangram-component.min.js --port 7000 --live --open",
-      "dist": "npm run build && uglifyjs dist/aframe-tangram-component.js > dist/aframe-tangram-component.min.js",
-      "lint": "semistandard -v | snazzy",
-      "prepublish": "npm run dist",
-      "ghpages": "ghpages",
-      "start": "npm run dev",
-      "test": "karma start ./tests/karma.conf.js",
-      "test:firefox": "karma start ./tests/karma.conf.js --browsers Firefox",
-      "test:chrome": "karma start ./tests/karma.conf.js --browsers Chrome"
+        "build": "webpack index.js dist/aframe-tangram-component.js",
+        "dev": "budo index.js:dist/aframe-tangram-component.min.js --port 7000 --live --open",
+        "dist": "npm run build && uglifyjs dist/aframe-tangram-component.js > dist/aframe-tangram-component.min.js",
+        "lint": "semistandard -v | snazzy",
+        "prepublish": "npm run dist",
+        "ghpages": "ghpages",
+        "start": "npm run dev",
+        "test": "karma start ./tests/karma.conf.js",
+        "test:firefox": "karma start ./tests/karma.conf.js --browsers Firefox",
+        "test:chrome": "karma start ./tests/karma.conf.js --browsers Chrome"
     },
     "repository": {
         "type": "git",
@@ -58,6 +58,7 @@
         "sinon": "^1.17.5",
         "sinon-chai": "^2.14.0",
         "snazzy": "^4.0.0",
+        "uglify-es": "github:mishoo/UglifyJS2#harmony",
         "webpack": "^3.12.0"
     },
     "dependencies": {
