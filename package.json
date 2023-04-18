@@ -63,7 +63,7 @@
         "style-loader": "^0.23.1",
         "uglify-es": "github:mishoo/UglifyJS2#harmony",
         "url-loader": "^1.1.2",
-        "webpack": "^2.7.0"
+        "webpack": "^5.79.0"
     },
     "dependencies": {
         "cuid": "^1.3.8",
